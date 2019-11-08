@@ -1,0 +1,22 @@
+// EVERYTHING ON HERE WAS DONE ON THE 192.168.45.0 NETWORK //
+
+## Wireshark Commands (and what they were used for): #################################
+tcp.port != 22 // TCP communications over other ports besides 22
+not ssh // Conditional: not ssh
+not ssh and !tcp.dstport == 22 and !tcp.srcport == 22 and not stp
+tcp.flags.ack and tcp.flags.syn // Checking for specific flags
+tcp[13] == 10
+tcp[13] == 14
+tcp[13] == 1 // FIN Scan, used to determine linux machines (they don't respond back)
+ip.addr == 192.168.45.20 // Look for any interactions with remote windows machine
+
+## Remote session with 192.168.45.10 - Nmap Commands (and what they were used for): ##
+nmap -sL 192.168.45.0/24
+nmap -sn 192.168.45.0/24
+nmap -PS 192.168.45.0/24
+nmap -sT 192.168.45.0/24
+nmap -sS 192.168.45.0/24
+nmap -sF 192.168.45.30 // FIN Scan
+nmap -O 192.168.45.0/24 // OS Scan
+nmap -sV 192.168.45.0/24 // Version information for found services
+nmap -sS -sV -O 192.168.45.0/24 -oA ScanResults // does service scan, version scan, and OS scan on the class C network and saves the output to file called ScanResults.gnmap 
